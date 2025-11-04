@@ -21,9 +21,12 @@ jobs:
           # Try ROOT from apt
           # sudo snap install -y root-system-bin root-system-common root-system-dev || true
           sudo snap install root-framework
+          snap run root-framework
 
       - name: Build Convino
         run: |
+          export PATH=$PATH:/snap/root-framework/current/usr/bin
+          export ROOTSYS=/snap/root-framework/current
           make -j$(nproc)
           ls -l ./convino || echo "Convino binary not found!"
 
