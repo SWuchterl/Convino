@@ -35,3 +35,8 @@ obj/%.o: src/%.cpp
 clean: 
 	rm -f obj/*.o obj/*.d
 	touch bin/*
+
+
+.PHONY: test
+test:
+	@bash test/run_tests.sh

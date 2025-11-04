@@ -10,5 +10,18 @@ It is also installed on lxplus6 at CERN in
 ``/afs/cern.ch/user/j/jkiesele/public/Convino/latest``
 For compiling and running on cern lxplus, please source the lxplus_env.sh script.
 
+## Continuous Integration (CI)
+
+The `dev` branch includes an automated workflow that:
+1. Builds the `convino` binary using the provided Makefile.
+2. Runs test configurations located under `test/advanced/`.
+3. Stores log output under `test/logs/`.
+
+### Run tests locally
+```bash
+make
+make test
+
+
 
 [1] J. Kieseler, "A method and tool for combining differential or inclusive measurements obtained with simultaneously constrained uncertainties", https://arxiv.org/abs/1706.01681, EPJC (2017) 77
