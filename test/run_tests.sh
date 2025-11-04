@@ -9,8 +9,16 @@ if [ ! -f "./convino" ]; then
   exit 1
 fi
 
-TEST_DIR="test/advanced"
 LOG_DIR="test/logs"
+
+# get the test to run from comnmand line argument
+if [ "$1" == "simple" ]; then
+  TEST_DIR="test/simple"
+fi
+if [ "$1" == "advanced" ]; then
+  TEST_DIR="test/advanced"
+fi
+
 mkdir -p "$LOG_DIR"
 
 FAILURES=0

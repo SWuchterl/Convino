@@ -38,5 +38,9 @@ clean:
 
 
 .PHONY: test
-test:
-	@bash test/run_tests.sh
+test_simple:
+	@bash test/run_tests.sh simple
+
+.PHONY: test
+test_advanced:
+	@bash test/run_tests.sh advanced

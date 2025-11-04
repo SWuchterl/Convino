@@ -1,0 +1,6 @@
+name: convino
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - root=6.28   # or a stable version you prefer

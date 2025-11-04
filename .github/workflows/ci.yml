@@ -11,26 +11,39 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Step 1: Checkout the repository
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y build-essential gfortran cmake git wget
-          # Try ROOT from apt
-          # sudo snap install -y root-system-bin root-system-common root-system-dev || true
-          sudo snap install root-framework
-          snap run root-framework
+      # Step 2: Set up Miniconda
+      - name: Set up Miniconda
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          python-version: 3.10
+          auto-update-conda: true
+          activate-environment: convino
 
+      # Step 3: Install ROOT via Conda
+      - name: Set up Conda environment
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          auto-update-conda: true
+          environment-file: environment.yml
+          activate-environment: convino
+
+      # Step 4: Build Convino
       - name: Build Convino
         run: |
-          export PATH=$PATH:/snap/root-framework/current/usr/bin
-          export ROOTSYS=/snap/root-framework/current
           make -j$(nproc)
           ls -l ./convino || echo "Convino binary not found!"
 
-      - name: Run tests
+      - name: Run tests - simple
         run: |
           chmod +x test/run_tests.sh
-          ./test/run_tests.sh
+          ./test/run_tests.sh simple
+
+      - name: Run tests - advanced
+        run: |
+          chmod +x test/run_tests.sh
+          ./test/run_tests.sh advanced
+
