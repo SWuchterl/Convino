@@ -1,6 +1,8 @@
 name: convino
 channels:
   - conda-forge
+  - defaults
 dependencies:
   - python=3.10
-  - root=6.28   # or a stable version you prefer
+  - root=6.28          # pick a stable version compatible with Convino
+  - numpy               # optional, useful if you add Python tests later

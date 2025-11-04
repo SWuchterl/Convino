@@ -1,4 +1,4 @@
-name: Convino CI
+ame: Convino CI
 
 on:
   push:
@@ -15,23 +15,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Step 2: Set up Miniconda
-      - name: Set up Miniconda
-        uses: conda-incubator/setup-miniconda@v2
-        with:
-          python-version: 3.10
-          auto-update-conda: true
-          activate-environment: convino
-
-      # Step 3: Install ROOT via Conda
+      # Step 2: Set up Miniconda environment from environment.yml
       - name: Set up Conda environment
         uses: conda-incubator/setup-miniconda@v2
         with:
-          auto-update-conda: true
           environment-file: environment.yml
+          auto-update-conda: true
           activate-environment: convino
 
-      # Step 4: Build Convino
+      # Step 3: Build Convino
       - name: Build Convino
         run: |
           make -j$(nproc)
