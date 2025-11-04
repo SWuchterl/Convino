@@ -20,7 +20,7 @@ jobs:
           sudo apt-get install -y build-essential gfortran cmake git wget
           # Try ROOT from apt
           # sudo snap install -y root-system-bin root-system-common root-system-dev || true
-          sudo snap install -y root-framework
+          sudo snap install root-framework
 
       - name: Build Convino
         run: |
