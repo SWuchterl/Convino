@@ -1,0 +1,14 @@
+# add usual c++ makefile content here
+*.o
+*.d
+bin/*
+*.so
+*.dSYM
+
+# and all compiled files
+convino
+convino_testCovarianceMerge
+convino_text_to_pdf_matrix
+root_to_matrix
+differential_example
+root_to_measured
