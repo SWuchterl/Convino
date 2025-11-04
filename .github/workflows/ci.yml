@@ -26,6 +26,12 @@ jobs:
       # Step 3: Build Convino
       - name: Build Convino
         run: |
+          # Activate the conda environment first
+          source $(conda info --base)/etc/profile.d/conda.sh
+          conda activate convino
+          which root-config
+          root-config --version
+          # Now build Convino
           make -j$(nproc)
           ls -l ./convino || echo "Convino binary not found!"
 
