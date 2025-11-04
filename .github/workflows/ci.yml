@@ -1,4 +1,4 @@
-ame: Convino CI
+name: Convino CI
 
 on:
   push:
