@@ -19,14 +19,8 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y build-essential gfortran cmake git wget
           # Try ROOT from apt
-          sudo apt-get install -y root-system-bin root-system-common root-system-dev || true
-          # Fallback if apt fails
-          if ! command -v root-config &> /dev/null; then
-            echo "ROOT not found via apt, installing via conda..."
-            sudo apt-get install -y python3 python3-pip
-            pip install conda
-            conda install -y -c conda-forge root
-          fi
+          # sudo snap install -y root-system-bin root-system-common root-system-dev || true
+          sudo snap install -y root-framework
 
       - name: Build Convino
         run: |
